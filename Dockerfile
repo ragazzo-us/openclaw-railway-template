@@ -8,11 +8,15 @@ RUN apt-get update \
     gosu \
     procps \
     python3 \
+    python3-pip \
     tini \
     build-essential \
     zip \
     unzip \
   && rm -rf /var/lib/apt/lists/*
+
+# Instalação das bibliotecas Python para acesso ao MySQL e análise quantitativa
+RUN pip3 install --break-system-packages pymysql oandapyV20 pandas
 
 RUN npm install -g openclaw@2026.7.1-2
 RUN npm install -g clawhub@latest
